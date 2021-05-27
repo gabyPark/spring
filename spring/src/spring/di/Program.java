@@ -14,8 +14,9 @@ public class Program {
 	public static void main(String[] args) {
 		
 		/* 스프링에게 지시하는 방법으로 코드를 변경
-		 * Exam exam = new NewlecExam(); // ExamConsole console = new
-		 * InlineExamConsole(exam); // DI ExamConsole console = new GridExamConsole();
+		 * Exam exam = new NewlecExam();
+		 * // ExamConsole console = new InlineExamConsole(exam);
+		 * // DI ExamConsole console = new GridExamConsole();
 		 * 
 		 * console.setExam(exam);
 		 */
@@ -27,6 +28,9 @@ public class Program {
 		를 하고 나면, 지시서(setting.xml) 에 있는 객체들을 만들고, 인젝션까지 해서 컨테이너(IOC Container) 에 담아놨을 것
 		만들어진 객체는 변수명으로 꺼내 쓸 수도 있고, 타입명을 가지고 꺼내 쓸 수도 있다.
 		*/
+		
+		Exam exam = context.getBean(Exam.class);
+		System.out.println(exam.toString());
 		
 		// 변수명
 		ExamConsole console = (ExamConsole) context.getBean("console");
