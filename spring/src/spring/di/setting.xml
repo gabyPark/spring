@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<!-- Exam exam = new NewlecExam(); -->
@@ -22,7 +23,7 @@
 	</bean> -->
 
 	<!-- 단일태그로 속성 지정하기 -->
- 	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10" />
+ 	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="10" />
 	
 	<!-- ExamConsole console = new GridExamConsole(); -->
 	<bean id="console" class="spring.di.ui.InlineExamConsole" >
@@ -30,6 +31,17 @@
 			exam 함수를 불러오는 setter가 있어야하고 => name="exam"
 			형태는? reference = "exam" -->
 		<property name="exam" ref="exam" />
+	</bean>
+	
+	
+	<bean id="exams" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<bean class="spring.di.entity.NewlecExam" p:kor="1" p:eng="1" />
+				<ref bean="exam" />
+			</list>
+		</constructor-arg>
+	
 	</bean>
 	
 
